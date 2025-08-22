@@ -150,7 +150,7 @@ const data: PortfolioData = {
         "Developed a Flask-based web interface for intuitive query input, real-time execution, and visualization of database results."
       ],
       tech: ["Python", "NLTK", "MySQL", "MongoDB"],
-      image: "public/chatdb.png",
+      image: "/chatdb.png",
       links: {
         code: "https://github.com/mrhushabh/your-nl2sql",
       },
