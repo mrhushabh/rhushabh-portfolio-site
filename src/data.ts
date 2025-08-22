@@ -120,10 +120,10 @@ const data: PortfolioData = {
         "Used Finnhub API to fetch and display real-time stock prices, company info, charts and market data."
       ],
       tech: ["Python", "Flask", "Charts"],
-      image: "",
+      image: "public/stocksearch.jpeg",
       links: {
-        code: "https://github.com/mrhushabh/your-stocksearch",
-        demo: ""
+        code: "https://github.com/mrhushabh/Stock_analysis_web_application",
+        demo: "https://mywebpj-2024.nn.r.appspot.com/"
       },
     },
     {
@@ -135,12 +135,14 @@ const data: PortfolioData = {
         "Implemented portfolio tracking, virtual trading, and interactive financial visualizations using HighCharts, WebKit (iOS), and React (Web)."
       ],
       tech: ["Python", "NLTK", "MySQL", "MongoDB"],
+      image: "public/stockapp.jpeg",
       links: {
-        code: "https://github.com/mrhushabh/your-nl2sql",
+        code: "https://github.com/mrhushabh/iOS_StockApp/tree/main/StockApp",
+        demo: "https://www.youtube.com/watch?v=F8raFihjc6c"
       },
     },
     {
-      slug: "cahtdb",
+      slug: "chatdb",
       name: "ChatDB",
       summary:
       [
@@ -148,6 +150,7 @@ const data: PortfolioData = {
         "Developed a Flask-based web interface for intuitive query input, real-time execution, and visualization of database results."
       ],
       tech: ["Python", "NLTK", "MySQL", "MongoDB"],
+      image: "public/chatdb.png",
       links: {
         code: "https://github.com/mrhushabh/your-nl2sql",
       },
@@ -161,8 +164,10 @@ const data: PortfolioData = {
         "Established real-time analytics tracking by embedding Firebase database calls within Unity C# scripts, dynamically updating player behavior data and in-game events to generate actionable insights for continuous gameplay improvement."
       ],
       tech: ["Python", "NLTK", "MySQL", "MongoDB"],
+      image: "public/twisttilegolf.png",
       links: {
-        code: "https://github.com/mrhushabh/your-nl2sql",
+        code: "https://github.com/CSCI-526-Spring-2025/csci-526-final-project-putter-pirates",
+        demo: "https://csci-526-spring-2025.github.io/csci-526-final-project-putter-pirates/BetaBuild2/"
       },
     },
     {
@@ -175,8 +180,10 @@ const data: PortfolioData = {
        "Implemented data persistence and modular architecture using iOS frameworks to ensure efficiency, scalability, and a seamless user experience."
       ],
       tech: ["Python", "NLTK", "MySQL", "MongoDB"],
+      image: "public/habittrack.jpeg",
       links: {
-        code: "https://github.com/mrhushabh/your-nl2sql",
+        code: "https://github.com/mrhushabh/iOSapp_HabitTracker/tree/main/HabitTracker",
+        demo: "https://github.com/mrhushabh/iOSapps-TodoList/tree/main/TodoList"
       },
     },
 

@@ -1,5 +1,7 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import data from "./data";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import { GitHubLogoIcon } from "@radix-ui/react-icons"; // install: npm i lucide-react
 
 function SectionTitle({ children }: { children: React.ReactNode }) {
   return <h2 className="text-2xl font-semibold mb-4">{children}</h2>;
@@ -53,7 +55,7 @@ function Nav() {
           ))}
         </div>
         <a
-          href={`data.links.resume`}
+          href={data.links.resume}
           target="_blank"
           rel="noopener noreferrer"
           className="hidden sm:inline-block px-3 py-1.5 rounded-xl bg-slate-900 text-white text-sm hover:opacity-90"
@@ -99,11 +101,19 @@ function Hero() {
 }
 
 function Projects() {
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  const scroll = (dir: "left" | "right") => {
+    if (!scrollRef.current) return;
+    const scrollAmount = dir === "left" ? -300 : 300;
+    scrollRef.current.scrollBy({ left: scrollAmount, behavior: "smooth" });
+  };
+
   const linkFor = (p: (typeof data.projects)[number]) =>
     p.links.demo || p.links.code || "#";
 
   return (
-    <section id="projects" className="max-w-5xl mx-auto px-6 pb-16">
+    <section id="projects" className="relative max-w-5xl mx-auto px-6 pb-16">
       <div className="flex items-baseline justify-between mb-4">
         <SectionTitle>Projects</SectionTitle>
         <a
@@ -112,7 +122,11 @@ function Projects() {
           onClick={(e) => {
             e.preventDefault();
             // SPA navigate
-            window.history.pushState(null, "", `${import.meta.env.BASE_URL}projects`);
+            window.history.pushState(
+              null,
+              "",
+              `${import.meta.env.BASE_URL}projects`
+            );
             window.dispatchEvent(new PopStateEvent("popstate"));
           }}
         >
@@ -120,9 +134,24 @@ function Projects() {
         </a>
       </div>
 
+      {/* scroll buttons */}
+      <button
+        onClick={() => scroll("left")}
+        className="absolute left-0 top-1/2 -translate-y-1/2 bg-white shadow-md rounded-full p-2 z-10"
+      >
+        <ChevronLeft className="w-5 h-5" />
+      </button>
+      <button
+        onClick={() => scroll("right")}
+        className="absolute right-0 top-1/2 -translate-y-1/2 bg-white shadow-md rounded-full p-2 z-10"
+      >
+        <ChevronRight className="w-5 h-5" />
+      </button>
+
       {/* horizontal scroller */}
       <div
-        className="overflow-x-auto pb-2 -mx-6 px-6"
+        ref={scrollRef}
+        className="overflow-x-auto pb-2 -mx-6 px-6 scroll-smooth"
         style={{ scrollSnapType: "x mandatory" }}
       >
         <div className="flex gap-4">
@@ -146,15 +175,31 @@ function Projects() {
               )}
               <div className="p-5">
                 <h3 className="text-lg font-medium">{p.name}</h3>
-                <ul className="mt-2 list-disc list-inside space-y-1 text-sm">
-                  {p.summary.map((b, j) => <li key={j}>{b}</li>)}
-                </ul>
+                {/* <ul className="mt-2 list-disc list-inside space-y-1 text-sm">
+                  {p.summary.map((b, j) => (
+                    <li key={j}>{b}</li>
+                  ))}
+                </ul> */}
                 <div className="mt-3 flex flex-wrap gap-2">
                   {p.tech.map((t) => (
-                    <span key={t} className="text-xs border rounded-full px-2 py-1 bg-white">
+                    <span
+                      key={t}
+                      className="text-xs border rounded-full px-2 py-1 bg-white"
+                    >
                       {t}
                     </span>
                   ))}
+
+                  <a
+                    className="flex items-center gap-1 underline hover:text-black transition"
+                    href={p.links.code}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                  <GitHubLogoIcon className="w-4 h-4 transition-transform duration-200 group-hover:scale-110 group-hover:-rotate-6" />
+                  <span className="transition-colors duration-200 group-hover:font-medium">Code</span>
+                  </a>
+
                 </div>
               </div>
             </a>
