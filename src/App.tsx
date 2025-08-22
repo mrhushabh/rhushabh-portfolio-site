@@ -48,7 +48,9 @@ function Projects() {
         {data.projects.map((p) => (
           <article key={p.name} className="rounded-2xl border p-5 hover:shadow transition">
             <h3 className="text-xl font-medium">{p.name}</h3>
-            <p className="mt-2">{p.summary}</p>
+            <ul className="mt-2 list-disc list-inside space-y-1">
+              {p.summary.map((b, j) => <li key={j}>{b}</li>)}
+            </ul>
             <div className="mt-3 flex flex-wrap gap-2">
               {p.tech.map((t) => (
                 <span key={t} className="text-xs border rounded-full px-2 py-1">{t}</span>
