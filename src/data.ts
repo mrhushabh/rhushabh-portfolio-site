@@ -20,9 +20,11 @@ export type ExperienceItem = {
 };
 
 export type ProjectItem = {
+  slug: string;
   name: string;
   summary: string[];
   tech: string[];
+  image?: string;   
   links: { code?: string; demo?: string };
 };
 
@@ -53,7 +55,7 @@ const data: PortfolioData = {
     email: "rushmadurwar@email.com",
     github: "https://github.com/mrhushabh",
     linkedin: "https://www.linkedin.com/in/rhushabh-madurwar",
-    resume: "https://github.com/mrhushabh/rhushabh-portfolio-site/blob/main/public/Rhushabh%20Madurwar.pdf",
+    resume: "Rhushabh Madurwar.pdf",
   },
   about:
     "I enjoy building reliable apps and data systems. I care about clean design, performance, and solving real problems.",
@@ -110,6 +112,7 @@ const data: PortfolioData = {
 
   projects: [
     {
+      slug: "stock-search",
       name: "Stock Search",
       summary:
       [
@@ -117,11 +120,14 @@ const data: PortfolioData = {
         "Used Finnhub API to fetch and display real-time stock prices, company info, charts and market data."
       ],
       tech: ["Python", "Flask", "Charts"],
+      image: "",
       links: {
         code: "https://github.com/mrhushabh/your-stocksearch",
+        demo: ""
       },
     },
     {
+      slug: "stock-ios-web",
       name: "Stock Trading and Digital Wallet iOS/Web App",
       summary:
       [
@@ -134,6 +140,7 @@ const data: PortfolioData = {
       },
     },
     {
+      slug: "cahtdb",
       name: "ChatDB",
       summary:
       [
@@ -146,6 +153,7 @@ const data: PortfolioData = {
       },
     },
     {
+      slug: "twist-tile-golf",
       name: "Twist Tile Golf",
       summary:
       [
@@ -158,6 +166,7 @@ const data: PortfolioData = {
       },
     },
     {
+      slug: "basic-ios-apps",
       name: "Productivity iOS Apps",
       summary:
       [
@@ -201,7 +210,7 @@ const data: PortfolioData = {
     {
       title: "Copyright for Sentiment Analysis of Financial News",
       venue: "",
-      link: "https://drive.google.com/drive/folders/1F0V7_CwWeSDeFydVtIDtxysh_nE6eH3C?usp=drive_link",
+      link: "https://drive.google.com/file/d/1aO1H7jI3c6qlMDJXKc64Kexc3hlqYDQ5/view?usp=drive_link",
     },
 
   ],
