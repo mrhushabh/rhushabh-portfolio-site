@@ -46,6 +46,51 @@ export type PortfolioData = {
   skills: string[];
   publications: PublicationItem[];
 };
+// Add this next to your existing exports
+export type SkillGroup = {
+  category: string;
+  items: string[];
+};
+
+export const skillGroups: SkillGroup[] = [
+  {
+    category: "Programming Languages",
+    items: ["Python", "Swift", "SQL", "Kotlin", "HTML", "CSS", "Java", "C#"],
+  },
+  {
+    category: "Web & Databases",
+    items: [
+      "React", "Typescript", "Firebase", "Flask", "Node.js",
+      "MongoDB", "MySQL", "Postgres"
+    ],
+  },
+  {
+    category: "Frameworks & Cloud",
+    items: [
+      "SwiftUI", "Tailwind CSS", "Flutter", "Springboot", "Hadoop",
+      "REST", "AWS (EC2, DynamoDB)", "GCP"
+    ],
+  },
+  {
+    category: "Other & OS",
+    items: [
+      "Postman", "Unity", "Xcode", "Git", "Jira/Confluence",
+      "Azure DevOps", "Linux", "MS Office"
+    ],
+  },
+  {
+    category: "Data Science & Analysis",
+    items: [
+      "Statistics", "Machine Learning", "Tableau", "NLP", "LLM",
+      "Web Scraping", "Data Analytics"
+    ],
+  },
+];
+
+// (optional) keep your old flat list in sync:
+export const skills = Array.from(
+  new Set(skillGroups.flatMap(g => g.items))
+);
 
 const data: PortfolioData = {
   name: "Rhushabh Madurwar",
@@ -201,6 +246,7 @@ const data: PortfolioData = {
     "AWS",
     "GCP",
     "Docker",
+
   ],
 
   publications: [

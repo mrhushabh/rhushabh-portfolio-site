@@ -1,7 +1,8 @@
-import { useEffect, useState, useRef } from "react";
-import data from "./data";
-import { ChevronLeft, ChevronRight } from "lucide-react";
-import { GitHubLogoIcon } from "@radix-ui/react-icons"; // install: npm i lucide-react
+import { useEffect, useState, useRef, useMemo } from "react";
+import data  from "./data";
+import { skillGroups } from "./data"; 
+import { ChevronLeft, ChevronRight, Mail } from "lucide-react";
+import { GitHubLogoIcon, LinkedInLogoIcon } from "@radix-ui/react-icons"; // install: npm i lucide-react
 
 function SectionTitle({ children }: { children: React.ReactNode }) {
   return <h2 className="text-2xl font-semibold mb-4">{children}</h2>;
@@ -71,7 +72,7 @@ function Hero() {
   return (
     <header
       id="home"
-      className="relative max-w-5xl mx-auto px-6 py-16"
+      className="relative max-w-5xl mx-auto px-6 py-12"
     >
       {/* soft gradient background accent */}
       <div
@@ -83,6 +84,17 @@ function Hero() {
       <p className="mt-2 text-lg">{data.tagline}</p>
       {data.location && <p className="mt-2 text-slate-600">{data.location}</p>}
       <p className="mt-6 max-w-2xl leading-relaxed">{data.about}</p>
+      <div className="mt-6 flex gap-4">
+  <a href={`mailto:${data.links.email}`} className="p-2 rounded-full border hover:bg-slate-50">
+    <Mail className="w-5 h-5" />
+  </a>
+  <a href={data.links.github} target="_blank" rel="noreferrer" className="p-2 rounded-full border hover:bg-slate-50">
+    <GitHubLogoIcon className="w-5 h-5" />
+  </a>
+  <a href={data.links.linkedin} target="_blank" rel="noreferrer" className="p-2 rounded-full border hover:bg-slate-50">
+    <LinkedInLogoIcon className="w-5 h-5" />
+  </a>
+</div>
       {/* <div className="mt-6 flex flex-wrap gap-3">
         <a
           className="px-4 py-2 rounded-2xl bg-slate-900 text-white hover:opacity-90"
@@ -97,6 +109,102 @@ function Hero() {
         </a>
       </div> */}
     </header>
+    
+  );
+}
+// function Skills() {
+//   return (
+//     <section id="skills" className="max-w-5xl mx-auto px-6 pb-16">
+//       <SectionTitle>Skills</SectionTitle>
+//       <div className="flex flex-wrap gap-2">
+//         {data.skills.map((s) => (
+//           <span key={s} className="px-3 py-2 border rounded-2xl bg-white">{s}</span>
+//         ))}
+//       </div>
+//     </section>
+//   );
+// }
+
+function Skills() {
+  const [active, setActive] = useState<string>("All");
+
+  const categories = useMemo(() => ["All", ...skillGroups.map(g => g.category)], []);
+  const allSkills = useMemo(
+    () => Array.from(new Set(skillGroups.flatMap(g => g.items))),
+    []
+  );
+
+  const visible = useMemo(() => {
+    if (active === "All") return allSkills;
+    const group = skillGroups.find(g => g.category === active);
+    return group ? group.items : [];
+  }, [active, allSkills]);
+
+  const countFor = (cat: string) =>
+    cat === "All"
+      ? allSkills.length
+      : (skillGroups.find(g => g.category === cat)?.items.length ?? 0);
+
+  return (
+    <section id="skills" className="max-w-5xl mx-auto px-6 pb-16">
+      <SectionTitle>Skills</SectionTitle>
+
+      {/* Mobile: dropdown */}
+      <div className="sm:hidden mb-4">
+        <label className="sr-only" htmlFor="skills-filter">Filter skills</label>
+        <select
+          id="skills-filter"
+          value={active}
+          onChange={(e) => setActive(e.target.value)}
+          className="w-full border rounded-lg p-2"
+        >
+          {categories.map(cat => (
+            <option key={cat} value={cat}>
+              {cat} ({countFor(cat)})
+            </option>
+          ))}
+        </select>
+      </div>
+
+      {/* Desktop: underline tabs (scrollable) */}
+      <div className="relative hidden sm:block mb-5">
+        {/* subtle edge fades to hint scroll */}
+        <div className="pointer-events-none absolute left-0 top-0 h-full w-6 bg-gradient-to-r from-white to-transparent" />
+        <div className="pointer-events-none absolute right-0 top-0 h-full w-6 bg-gradient-to-l from-white to-transparent" />
+        <div className="-mx-6 px-6 overflow-x-auto">
+          <div role="tablist" className="flex min-w-max gap-6 border-b">
+            {categories.map(cat => {
+              const selected = active === cat;
+              return (
+                <button
+                  role="tab"
+                  aria-selected={selected}
+                  key={cat}
+                  onClick={() => setActive(cat)}
+                  className={[
+                    "whitespace-nowrap pb-2 -mb-px border-b-2 text-sm transition",
+                    selected
+                      ? "border-slate-900 text-slate-900"
+                      : "border-transparent text-slate-500 hover:text-slate-900 hover:border-slate-300"
+                  ].join(" ")}
+                >
+                  {cat} <span className="ml-1 text-xs opacity-70">({countFor(cat)})</span>
+                </button>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+
+      {/* Skills pills stay the same look */}
+      <div className="flex flex-wrap gap-2">
+        {visible.map(s => (
+          <span key={s} className="px-3 py-2 border rounded-2xl bg-white">
+            {s}
+          </span>
+        ))}
+      </div>
+    </section>
   );
 }
 
@@ -250,18 +358,6 @@ function Education() {
   );
 }
 
-function Skills() {
-  return (
-    <section id="skills" className="max-w-5xl mx-auto px-6 pb-16">
-      <SectionTitle>Skills</SectionTitle>
-      <div className="flex flex-wrap gap-2">
-        {data.skills.map((s) => (
-          <span key={s} className="px-3 py-2 border rounded-2xl bg-white">{s}</span>
-        ))}
-      </div>
-    </section>
-  );
-}
 
 function Publications() {
   return (
@@ -287,17 +383,17 @@ function Publications() {
 
 function Contact() {
   return (
-    <section id="contact" className="max-w-5xl mx-auto px-6 pb-24">
+    <section id="contact" className="max-w-5xl mx-auto px-6 pb-16">
       <SectionTitle>Contact</SectionTitle>
       <div className="space-y-2">
-        <a className="underline" href={`mailto:${data.links.email}`}>{data.links.email}</a>
+        <a className="underline transition-colors duration-200 group-hover:font-medium" href={`mailto:${data.links.email}`}>{data.links.email}</a>
         <div className="space-x-4">
           <a className="underline" href={data.links.github} target="_blank" rel="noreferrer">GitHub</a>
           <a className="underline" href={data.links.linkedin} target="_blank" rel="noreferrer">LinkedIn</a>
         </div>
       </div>
     </section>
-  );
+  ); 
 }
 
 function BackToTop() {
@@ -326,10 +422,11 @@ export default function App() {
     <div className="min-h-screen bg-white text-slate-900">
       <Nav />
       <Hero />
-      <Projects />
-      <Experience />
-      <Education />
+      
       <Skills />
+      <Experience />
+      <Projects />
+      <Education />
       <Publications />
       <Contact />
       <footer className="text-center text-sm text-slate-500 py-8 border-t">
