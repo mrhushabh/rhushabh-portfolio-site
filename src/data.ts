@@ -17,6 +17,8 @@ export type ExperienceItem = {
   company: string;
   period: string;
   bullets: string[];
+  logo?: string;       
+  companyUrl?: string;
 };
 
 export type ProjectItem = {
@@ -132,6 +134,8 @@ const data: PortfolioData = {
         "Created an end-to-end implementation of a Microsoft Dynamics 365 CRM platform tailored to manage relationships and deal flow with Bond Investors and Originators.",
         "Migrated eBAM software application to FIS’s cloud, optimizing infrastructure costs and ensuring support continuity."
       ],
+      logo: "/HA logo.jpeg",
+
     },
     {
       title: "Student Developer",
@@ -143,6 +147,8 @@ const data: PortfolioData = {
         "Programmed scripts to automate daily API data updates, ensuring APIs remain up to date with new data while reducing manual data insertion and update time by 50%, improving accuracy and efficiency.",
         "Completed Data migration, API migration and API testing processes, increasing API performance by 25%"
       ],
+      logo: "/USCFPM.png"
+      
     },
     {
       title: "Software Engineering Intern",
@@ -152,25 +158,11 @@ const data: PortfolioData = {
         "Developed Python automation scripts leveraging Selenium, BeautifulSoup, and Kafka for Help Center web pages,optimizing content update pipelines and reducing manual effort by 75%.",
         "Designed and implemented a Kafka-based event-driven architecture for processing real-time updates to Help Center content, ensuring low-latency and high-throughput data synchronization."
       ],
+      logo: "/ptcinc_logo.jpeg"
     }
   ],
 
   projects: [
-    {
-      slug: "stock-search",
-      name: "Stock Search",
-      summary:
-      [
-        "Created a Flask-based stock search app with autocomplete functionality and interactive charts",
-        "Used Finnhub API to fetch and display real-time stock prices, company info, charts and market data."
-      ],
-      tech: ["Python", "Flask", "Charts"],
-      image: "/stocksearch.jpeg",
-      links: {
-        code: "https://github.com/mrhushabh/Stock_analysis_web_application",
-        demo: "https://mywebpj-2024.nn.r.appspot.com/"
-      },
-    },
     {
       slug: "stock-ios-web",
       name: "Stock Trading and Digital Wallet iOS/Web App",
@@ -187,20 +179,6 @@ const data: PortfolioData = {
       },
     },
     {
-      slug: "chatdb",
-      name: "ChatDB",
-      summary:
-      [
-        "Devised a Python NLP system with NLTK to generate and execute SQL/NoSQL queries, reducing query time by 50% and improving execution by 30%.",
-        "Developed a Flask-based web interface for intuitive query input, real-time execution, and visualization of database results."
-      ],
-      tech: ["Python", "NLTK", "MySQL", "MongoDB"],
-      image: "/chatdb.png",
-      links: {
-        code: "https://github.com/mrhushabh/your-nl2sql",
-      },
-    },
-    {
       slug: "twist-tile-golf",
       name: "Twist Tile Golf",
       summary:
@@ -213,6 +191,48 @@ const data: PortfolioData = {
       links: {
         code: "https://github.com/CSCI-526-Spring-2025/csci-526-final-project-putter-pirates",
         demo: "https://csci-526-spring-2025.github.io/csci-526-final-project-putter-pirates/BetaBuild2/"
+      },
+    },
+    {
+      slug: "Trie module for DuckDB",
+      name: "Trie module for DuckDB",
+      summary:
+      [
+        "Advanced string prefix matching in DuckDB by implementing a trie module prototype, achieving 12% improved efficiency for string filtering and prefix matching queries.",
+        "Conducted testing on datasets ranging from 10k to 100k records under various conditions ."
+      ],
+      tech: ["C++", "DuckDB", "SQL"],
+      image: "",
+      links:{}
+
+    },
+    {
+      slug: "stock-search",
+      name: "Stock Search",
+      summary:
+      [
+        "Created a Flask-based stock search app with autocomplete functionality and interactive charts",
+        "Used Finnhub API to fetch and display real-time stock prices, company info, charts and market data."
+      ],
+      tech: ["Python", "Flask", "Charts"],
+      image: "/stocksearch.jpeg",
+      links: {
+        code: "https://github.com/mrhushabh/Stock_analysis_web_application",
+        demo: "https://mywebpj-2024.nn.r.appspot.com/"
+      },
+    },
+    {
+      slug: "chatdb",
+      name: "ChatDB",
+      summary:
+      [
+        "Devised a Python NLP system with NLTK to generate and execute SQL/NoSQL queries, reducing query time by 50% and improving execution by 30%.",
+        "Developed a Flask-based web interface for intuitive query input, real-time execution, and visualization of database results."
+      ],
+      tech: ["Python", "NLTK", "MySQL", "MongoDB"],
+      image: "/chatdb.png",
+      links: {
+        code: "https://github.com/mrhushabh/your-nl2sql",
       },
     },
     {

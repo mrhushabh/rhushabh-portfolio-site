@@ -9,11 +9,12 @@ function SectionTitle({ children }: { children: React.ReactNode }) {
 }
 
 const SECTIONS = [
+
   { id: "home", label: "Home" },
-  { id: "projects", label: "Projects" },
-  { id: "experience", label: "Experience" },
-  { id: "education", label: "Education" },
   { id: "skills", label: "Skills" },
+  { id: "experience", label: "Experience" },
+  { id: "projects", label: "Projects" },
+  { id: "education", label: "Education" },
   { id: "publications", label: "Publications" },
   { id: "contact", label: "Contact" },
 ];
@@ -318,7 +319,6 @@ function Projects() {
   );
 }
 
-
 function Experience() {
   return (
     <section id="experience" className="max-w-5xl mx-auto px-6 pb-16">
@@ -326,10 +326,42 @@ function Experience() {
       <div className="space-y-4">
         {data.experience.map((e, i) => (
           <div key={i} className="rounded-2xl border p-5 hover:shadow-sm transition">
-            <div className="flex items-center justify-between gap-3">
-              <p className="font-medium">{e.title} • {e.company}</p>
+            {/* Top row with logo + title/company + period */}
+            <div className="flex items-start justify-between gap-3">
+              <div className="flex items-center gap-3 min-w-0">
+                {e.logo && (
+                  <img
+                    src={e.logo.startsWith("http")
+                      ? e.logo
+                      : `${import.meta.env.BASE_URL}${e.logo}`}
+                    alt={`${e.company} logo`}
+                    className="h-8 w-8 rounded-md object-contain border bg-white"
+                    loading="lazy"
+                    width={32}
+                    height={32}
+                  />
+                )}
+                <p className="font-medium truncate">
+                  {e.title} •{" "}
+                  {e.companyUrl ? (
+                    <a
+                      href={e.companyUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="underline decoration-slate-300 hover:decoration-slate-800"
+                      title={e.company}
+                    >
+                      {e.company}
+                    </a>
+                  ) : (
+                    e.company
+                  )}
+                </p>
+              </div>
               <p className="text-sm text-slate-600 whitespace-nowrap">{e.period}</p>
             </div>
+
+            {/* Bullets */}
             <ul className="mt-2 list-disc list-inside space-y-1">
               {e.bullets.map((b: string, j: number) => <li key={j}>{b}</li>)}
             </ul>
@@ -339,6 +371,27 @@ function Experience() {
     </section>
   );
 }
+
+// function Experience() {
+//   return (
+//     <section id="experience" className="max-w-5xl mx-auto px-6 pb-16">
+//       <SectionTitle>Experience</SectionTitle>
+//       <div className="space-y-4">
+//         {data.experience.map((e, i) => (
+//           <div key={i} className="rounded-2xl border p-5 hover:shadow-sm transition">
+//             <div className="flex items-center justify-between gap-3">
+//               <p className="font-medium">{e.title} • {e.company}</p>
+//               <p className="text-sm text-slate-600 whitespace-nowrap">{e.period}</p>
+//             </div>
+//             <ul className="mt-2 list-disc list-inside space-y-1">
+//               {e.bullets.map((b: string, j: number) => <li key={j}>{b}</li>)}
+//             </ul>
+//           </div>
+//         ))}
+//       </div>
+//     </section>
+//   );
+// }
 
 function Education() {
   return (
