@@ -17,7 +17,7 @@ export type ExperienceItem = {
   company: string;
   period: string;
   bullets: string[];
-  logo?: string;       
+  logo?: string;
   companyUrl?: string;
 };
 
@@ -26,7 +26,7 @@ export type ProjectItem = {
   name: string;
   summary: string[];
   tech: string[];
-  image?: string;   
+  image?: string;
   links: { code?: string; demo?: string };
 };
 
@@ -134,7 +134,7 @@ const data: PortfolioData = {
         "Created an end-to-end implementation of a Microsoft Dynamics 365 CRM platform tailored to manage relationships and deal flow with Bond Investors and Originators.",
         "Migrated eBAM software application to FIS’s cloud, optimizing infrastructure costs and ensuring support continuity."
       ],
-      logo: "/HA logo.jpeg",
+      logo: "HA logo.jpeg",
 
     },
     {
@@ -147,8 +147,8 @@ const data: PortfolioData = {
         "Programmed scripts to automate daily API data updates, ensuring APIs remain up to date with new data while reducing manual data insertion and update time by 50%, improving accuracy and efficiency.",
         "Completed Data migration, API migration and API testing processes, increasing API performance by 25%"
       ],
-      logo: "/USCFPM.png"
-      
+      logo: "USCFPM.png"
+
     },
     {
       title: "Software Engineering Intern",
@@ -158,7 +158,7 @@ const data: PortfolioData = {
         "Developed Python automation scripts leveraging Selenium, BeautifulSoup, and Kafka for Help Center web pages,optimizing content update pipelines and reducing manual effort by 75%.",
         "Designed and implemented a Kafka-based event-driven architecture for processing real-time updates to Help Center content, ensuring low-latency and high-throughput data synchronization."
       ],
-      logo: "/ptcinc_logo.jpeg"
+      logo: "ptcinc_logo.jpeg"
     }
   ],
 
@@ -167,12 +167,12 @@ const data: PortfolioData = {
       slug: "stock-ios-web",
       name: "Stock Trading and Digital Wallet iOS/Web App",
       summary:
-      [
-        "Built a cross-platform stock trading and portfolio analysis app, developing a SwiftUI iOS app and a MERN stack web app with Finnhub APIs for real-time stock data and MongoDB for portfolio management.",
-        "Implemented portfolio tracking, virtual trading, and interactive financial visualizations using HighCharts, WebKit (iOS), and React (Web)."
-      ],
+        [
+          "Built a cross-platform stock trading and portfolio analysis app, developing a SwiftUI iOS app and a MERN stack web app with Finnhub APIs for real-time stock data and MongoDB for portfolio management.",
+          "Implemented portfolio tracking, virtual trading, and interactive financial visualizations using HighCharts, WebKit (iOS), and React (Web)."
+        ],
       tech: ["Python", "NLTK", "MySQL", "MongoDB"],
-      image: "/stockapp.jpeg",
+      image: "stockapp.jpeg",
       links: {
         code: "https://github.com/mrhushabh/iOS_StockApp/tree/main/StockApp",
         demo: "https://www.youtube.com/watch?v=F8raFihjc6c"
@@ -182,12 +182,12 @@ const data: PortfolioData = {
       slug: "twist-tile-golf",
       name: "Twist Tile Golf",
       summary:
-      [
-        "Designed and developed a 2D game using Unity and C# for game mechanics and scripting; integrated Firebase to store and manage real-time game analytics.",
-        "Established real-time analytics tracking by embedding Firebase database calls within Unity C# scripts, dynamically updating player behavior data and in-game events to generate actionable insights for continuous gameplay improvement."
-      ],
+        [
+          "Designed and developed a 2D game using Unity and C# for game mechanics and scripting; integrated Firebase to store and manage real-time game analytics.",
+          "Established real-time analytics tracking by embedding Firebase database calls within Unity C# scripts, dynamically updating player behavior data and in-game events to generate actionable insights for continuous gameplay improvement."
+        ],
       tech: ["Python", "NLTK", "MySQL", "MongoDB"],
-      image: "/twisttilegolf.png",
+      image: "twisttilegolf.png",
       links: {
         code: "https://github.com/CSCI-526-Spring-2025/csci-526-final-project-putter-pirates",
         demo: "https://csci-526-spring-2025.github.io/csci-526-final-project-putter-pirates/BetaBuild2/"
@@ -197,25 +197,25 @@ const data: PortfolioData = {
       slug: "Trie module for DuckDB",
       name: "Trie module for DuckDB",
       summary:
-      [
-        "Advanced string prefix matching in DuckDB by implementing a trie module prototype, achieving 12% improved efficiency for string filtering and prefix matching queries.",
-        "Conducted testing on datasets ranging from 10k to 100k records under various conditions ."
-      ],
+        [
+          "Advanced string prefix matching in DuckDB by implementing a trie module prototype, achieving 12% improved efficiency for string filtering and prefix matching queries.",
+          "Conducted testing on datasets ranging from 10k to 100k records under various conditions ."
+        ],
       tech: ["C++", "DuckDB", "SQL"],
       image: "",
-      links:{}
+      links: {}
 
     },
     {
       slug: "stock-search",
       name: "Stock Search",
       summary:
-      [
-        "Created a Flask-based stock search app with autocomplete functionality and interactive charts",
-        "Used Finnhub API to fetch and display real-time stock prices, company info, charts and market data."
-      ],
+        [
+          "Created a Flask-based stock search app with autocomplete functionality and interactive charts",
+          "Used Finnhub API to fetch and display real-time stock prices, company info, charts and market data."
+        ],
       tech: ["Python", "Flask", "Charts"],
-      image: "/stocksearch.jpeg",
+      image: "stocksearch.jpeg",
       links: {
         code: "https://github.com/mrhushabh/Stock_analysis_web_application",
         demo: "https://mywebpj-2024.nn.r.appspot.com/"
@@ -225,12 +225,12 @@ const data: PortfolioData = {
       slug: "chatdb",
       name: "ChatDB",
       summary:
-      [
-        "Devised a Python NLP system with NLTK to generate and execute SQL/NoSQL queries, reducing query time by 50% and improving execution by 30%.",
-        "Developed a Flask-based web interface for intuitive query input, real-time execution, and visualization of database results."
-      ],
+        [
+          "Devised a Python NLP system with NLTK to generate and execute SQL/NoSQL queries, reducing query time by 50% and improving execution by 30%.",
+          "Developed a Flask-based web interface for intuitive query input, real-time execution, and visualization of database results."
+        ],
       tech: ["Python", "NLTK", "MySQL", "MongoDB"],
-      image: "/chatdb.png",
+      image: "chatdb.png",
       links: {
         code: "https://github.com/mrhushabh/your-nl2sql",
       },
@@ -239,13 +239,13 @@ const data: PortfolioData = {
       slug: "basic-ios-apps",
       name: "Productivity iOS Apps",
       summary:
-      [
-       "Developed two productivity-focused iOS applications: a Habit Tracker and a To-Do List app to help users manage time, goals, and daily habits effectively.",
-       "Designed clean, responsive UI/UX with real-time engagement features like customized notifications and visual feedback.",
-       "Implemented data persistence and modular architecture using iOS frameworks to ensure efficiency, scalability, and a seamless user experience."
-      ],
+        [
+          "Developed two productivity-focused iOS applications: a Habit Tracker and a To-Do List app to help users manage time, goals, and daily habits effectively.",
+          "Designed clean, responsive UI/UX with real-time engagement features like customized notifications and visual feedback.",
+          "Implemented data persistence and modular architecture using iOS frameworks to ensure efficiency, scalability, and a seamless user experience."
+        ],
       tech: ["Python", "NLTK", "MySQL", "MongoDB"],
-      image: "/habittrack.jpeg",
+      image: "habittrack.jpeg",
       links: {
         code: "https://github.com/mrhushabh/iOSapp_HabitTracker/tree/main/HabitTracker",
         demo: "https://github.com/mrhushabh/iOSapps-TodoList/tree/main/TodoList"
